@@ -1,0 +1,30 @@
+program: /root/workspace/PR-inspired-aggregation/tasks/peptides.py
+method: grid
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.seed:
+    values: [0, 1, 2, 3]
+  setup.sweep:
+    value: True
+  train.patience:
+    value: 500
+  train.lr: 
+    value: 0.001
+  train.wd: 
+    value: 0.00000001
+  model.hidden_channels: 
+    value: 300
+  model.phantom_grad: 
+    value: 5
+  model.dropout:
+    value: 0.2
+  model.beta_init: 
+    value: 2.0
+  model.gamma_init: 
+    value: 0.9
+  model.tol: 
+    value: 0.00005
+  model.max_iter: 
+    value: 50

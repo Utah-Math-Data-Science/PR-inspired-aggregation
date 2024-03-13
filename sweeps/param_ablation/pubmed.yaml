@@ -1,0 +1,30 @@
+program: /root/workspace/PR-inspired-aggregation/tasks/planetoid-citations.py
+method: grid
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.sweep:
+    value: True
+  load.dataset: 
+    value: pubmed
+  train.lr: 
+    value: 0.009
+  train.wd: 
+    value: 0.00000001
+  model.hidden_channels: 
+    value: 64
+  model.dropout:
+    value: 0.4
+  model.tol: 
+    value: 0.000001
+  model.max_iter: 
+    value: 5
+  model.phantom_grad: 
+    value: 50
+  model.fix_params: 
+    value: True
+  model.beta_init: 
+    values: [your values here]
+  model.gamma_init: 
+    values: [your values here]

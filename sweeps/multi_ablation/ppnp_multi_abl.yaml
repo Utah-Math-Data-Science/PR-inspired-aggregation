@@ -1,0 +1,42 @@
+program: /root/workspace/PR-inspired-aggregation/baselines/ppnp/synth_chains.py
+method: grid
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.seed:
+    values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  setup.device:
+    value: cuda
+  setup.sweep:
+    value: True
+  data.chain_len:
+    values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+  data.num_chains:
+    value: 20
+  data.num_classes:
+    value: 10
+  data.feature_dim:
+    value: 100
+  data.noise:
+    value: 0.0
+  load.split:
+    value: fixed_05/10/85
+  load.checkpoint_path:
+    value: /root/workspace/out/synth_chains/ppnp_multi_ablation
+  train.epochs:
+    value: 2000
+  train.patience:
+    value: 100
+  train.lr: 
+    value: 0.01
+  train.wd: 
+    value: 0.000000000001
+  model.hidden_channels:
+    value: 16
+  model.hidden_layers: 
+    value: 1
+  model.dropout:
+    value: 0.3
+  model.alpha:
+    value: 0.1

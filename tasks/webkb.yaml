@@ -1,0 +1,29 @@
+hydra:
+  job:
+    chdir: False
+  run:
+    dir: /root/workspace/out/planetoid/hydra/
+setup:
+  seed: 0
+  device: cuda
+  sweep: False
+  train: True
+  wandb_dir: /root/workspace/out/planetoid/
+load:
+  dataset: texas
+  load_checkpoint: False
+  checkpoint_path: /root/workspace/out/planetoid/chkpt.pt
+  split: geom-gcn
+train:
+  epochs: 2000
+  patience: 200
+  lr : 0.001
+  wd : 0
+model:
+  hidden_channels: 128
+  dropout : 0.1
+  phantom_grad : 10
+  beta_init : 0.0
+  gamma_init : 0.9
+  tol : 0.00001
+  max_iter : 50

@@ -1,0 +1,35 @@
+hydra:
+  job:
+    chdir: False
+  run:
+    dir: /root/workspace/out/tu/hydra/
+setup:
+  seed: 42
+  device: cuda
+  sweep: False
+  train: True
+  wandb_dir: /root/workspace/out/tu/
+data:
+  chain_len: 100
+  num_chains: 20
+  num_classes: 20
+  feature_dim: 100
+  noise: 0.0
+load:
+  split: fixed_05/10/85
+  dataset: MUTAG
+  batch_size: 128
+  load_checkpoint: False
+  checkpoint_path: /root/workspace/out/tu/100_len.pt
+train:
+  epochs: 2000
+  patience: 400
+  lr : .001
+  wd : 0 #1e-6
+model:
+  hidden_channels: 64
+  dropout: 0.1
+  phantom_grad : 10
+  beta_init : -0.0
+  gamma_init : -10.0
+  tol : 1e-6

@@ -1,0 +1,32 @@
+program: /root/workspace/PR-inspired-aggregation/tasks/webkb_direct.py
+method: bayes
+metric:
+  name: test_mean
+  goal: maximize
+run_cap: 200
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.sweep:
+    value: True
+  load.dataset: 
+    value: texas
+  train.lr: 
+    values: [1e-3, 5e-3, 8e-3, 9e-3, 1e-2]
+  train.wd: 
+    values: [0, 1e-12, 1e-8, 1e-6, 1e-5, 1e-3, 1e-2]
+  model.hidden_channels: 
+    values: [32, 64, 128]
+  model.phantom_grad: 
+    values: [1, 5, 10, 20, 50]
+  model.dropout:
+    values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+  model.beta_init: 
+    values: [-0.9, -0.5, -0.2, 0, 0.2, 0.5, 0.9]
+  model.gamma_init: 
+    values: [-0.9, -0.5, -0.2, 0, 0.2, 0.5, 0.9]
+  model.tol: 
+    values: [1e-6, 3e-6, 1e-5, 5e-5, 1e-4]
+  model.max_iter: 
+    values: [1, 5, 10, 20, 50]

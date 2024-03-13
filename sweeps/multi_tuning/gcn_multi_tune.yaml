@@ -1,0 +1,30 @@
+program: /root/workspace/PR-inspired-aggregation/baselines/gcn/synth_chains.py
+method: bayes
+metric:
+  name: test_acc
+  goal: maximize
+run_cap: 50
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.sweep:
+    value: True
+  load.checkpoint_path:
+    value: /root/workspace/out/synth_chains/gcn_sweep
+  data.chain_len:
+    value: 100
+  data.num_chains:
+    value: 20
+  data.num_classes:
+    value: 10
+  data.feature_dim:
+    value: 100
+  train.lr: 
+    values: [1e-3, 5e-3, 8e-3, 9e-3, 1e-2]
+  train.wd: 
+    values: [0, 1e-12, 1e-8, 1e-6, 1e-5, 1e-3, 1e-2]
+  model.hidden_layers: 
+    values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 140, 150, 160, 170, 180, 190, 200]
+  model.dropout:
+    values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]

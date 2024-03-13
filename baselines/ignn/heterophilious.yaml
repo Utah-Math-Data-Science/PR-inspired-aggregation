@@ -1,0 +1,27 @@
+hydra:
+  job:
+    chdir: False
+  run:
+    dir: /root/workspace/out/heterophilious/hydra/
+setup:
+  seed: 42
+  device: cuda
+  sweep: False
+  train: True
+  wandb_dir: /root/workspace/out/heterophilious/
+load:
+  split: fixed_05/10/85
+  dataset: Roman-empire
+  load_checkpoint: False
+  checkpoint_path: /root/workspace/out/heterophilious/ambiguous_checkpoint.pt
+train:
+  epochs: 2000
+  patience: 200
+  lr : .001
+  wd : 0 #1e-8
+model:
+  hidden_channels: 512
+  dropout: 0.2
+  kappa: 0.99
+  max_iter: 20
+  reuse_fp: False

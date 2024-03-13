@@ -1,0 +1,12 @@
+program: /root/workspace/PR-inspired-aggregation/tasks/webkb.py
+method: grid
+command:
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.seed:
+    values: [0,1,2,3,4,5,6,7,8,9,10,11]
+  setup.sweep:
+    value: True
+  load.dataset: 
+    value: wisconsin

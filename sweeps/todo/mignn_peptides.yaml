@@ -1,0 +1,25 @@
+program: /root/workspace/PR-inspired-aggregation/baselines/mignn/peptides.py
+method: bayes
+metric:
+  name: test_ap
+  goal: maximize
+run_cap: 50
+command:
+  - python3
+  - ${program}
+  - ${args_no_hyphens}
+parameters:
+  setup.sweep:
+    value: True
+  train.lr: 
+    values: [1e-4, 5e-4, 1e-3, 5e-3]
+  train.wd: 
+    values: [0, 1e-12, 1e-8, 1e-6, 1e-5, 1e-3, 1e-2]
+  model.hidden_channels: 
+    value: 300
+  model.dropout:
+    values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+  model.tol: 
+    values: [1e-6, 3e-6, 1e-5, 5e-5, 1e-4, 5e-4, 1e-3]
+  model.max_iter: 
+    values: [5, 10, 20, 50]
